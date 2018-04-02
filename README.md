@@ -13,7 +13,7 @@ Where source and destination are the specified files and folders. You can run th
 
 ## Installation
 
-* Build the project in Visual Studio 2017 or later.
+* Build the project in ```Release``` mode using Visual Studio 2017 or later.
 * Drag and drop the ```LightBuzz.Archiver.dll``` to your Asset folder.
 
 ## Compatibility
