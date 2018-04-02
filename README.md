@@ -14,7 +14,7 @@ Where source and destination are the specified files and folders. You can run th
 ## Installation
 
 * Build the project in ```Release``` mode using Visual Studio 2017 or later.
-* Drag and drop the ```LightBuzz.Archiver.dll``` to your Asset folder.
+* Drag and drop the ```LightBuzz.Archiver.dll``` into your ```Plugins``` folder.
 * In Unity, select ```Edit``` → ```Project Settings``` → ```Other Settings``` → ```Configuration``` and set the ```Scripting Runtime Version``` to ```.NET 4.6```.
 
 ## Compatibility
