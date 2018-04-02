@@ -13,8 +13,9 @@ Where source and destination are the specified files and folders. You can run th
 
 ## Installation
 
-* Build the project in Visual Studio 2017 or later.
-* Drag and drop the ```LightBuzz.Archiver.dll``` to your Asset folder.
+* Build the project in ```Release``` mode using Visual Studio 2017 or later.
+* Drag and drop the ```LightBuzz.Archiver.dll``` into your ```Plugins``` folder.
+* In Unity, select ```Edit``` → ```Project Settings``` → ```Other Settings``` → ```Configuration``` and set the ```Scripting Runtime Version``` to ```.NET 4.6```.
 
 ## Compatibility
 
@@ -45,7 +46,7 @@ Archiver.Compress(source, destination);
 ### Compressing a folder with all of its files and subfolders
 
 ```
-string source = @"C:\Users\LightBuzz\Desktop\Foo";
+string source = @"C:\Users\LightBuzz\Desktop\Foo\";
 string destination = @"C:\Users\LightBuzz\Desktop\Foo.zip";
 
 Archiver.Compress(source, destination);
@@ -55,7 +56,7 @@ Archiver.Compress(source, destination);
 
 ```
 string source = @"C:\Users\LightBuzz\Desktop\Foo.zip";
-string destination = @"C:\Users\LightBuzz\Desktop\";
+string destination = @"C:\Users\LightBuzz\Desktop\Foo\";
 
 Archiver.Compress(source, destination);
 ```
