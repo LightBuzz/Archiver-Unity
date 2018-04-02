@@ -46,7 +46,7 @@ Archiver.Compress(source, destination);
 ### Compressing a folder with all of its files and subfolders
 
 ```
-string source = @"C:\Users\LightBuzz\Desktop\Foo";
+string source = @"C:\Users\LightBuzz\Desktop\Foo\";
 string destination = @"C:\Users\LightBuzz\Desktop\Foo.zip";
 
 Archiver.Compress(source, destination);
@@ -56,7 +56,7 @@ Archiver.Compress(source, destination);
 
 ```
 string source = @"C:\Users\LightBuzz\Desktop\Foo.zip";
-string destination = @"C:\Users\LightBuzz\Desktop\";
+string destination = @"C:\Users\LightBuzz\Desktop\Foo\";
 
 Archiver.Compress(source, destination);
 ```
