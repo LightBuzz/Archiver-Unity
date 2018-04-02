@@ -142,7 +142,7 @@ namespace LightBuzz.Archiver
 
             if (!Directory.Exists(destination))
             {
-                throw new DirectoryNotFoundException("Directory does not exist.");
+                Directory.CreateDirectory(destination);
             }
 
             ZipFile.ExtractToDirectory(source, destination);
