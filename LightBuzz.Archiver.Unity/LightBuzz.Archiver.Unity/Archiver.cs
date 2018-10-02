@@ -29,17 +29,19 @@ namespace LightBuzz.Archiver
                 throw new ArgumentNullException("Destination path is null or empty.");
             }
 
-            if (File.GetAttributes(destination) == FileAttributes.Directory)
+            string destinationExtension = Path.GetExtension(destination);
+            if (destinationExtension != Extension)
             {
-                throw new ArgumentException("Destination is a directory. You need to specify the name of a zip file, instead.");
+                throw new ArgumentException("Destination path is not valid. You need to specify the name of a zip file, instead.");
             }
-
+            
             if (replaceExisting && File.Exists(destination))
             {
                 File.Delete(destination);
             }
 
-            if (File.GetAttributes(source) == FileAttributes.Directory)
+            FileAttributes sourceAttributes = File.GetAttributes(source);
+            if (sourceAttributes.HasFlag(FileAttributes.Directory))
             {
                 // Compress a folder.
                 ZipFile.CreateFromDirectory(source, destination);
