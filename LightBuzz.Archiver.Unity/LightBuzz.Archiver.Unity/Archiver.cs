@@ -29,8 +29,7 @@ namespace LightBuzz.Archiver
                 throw new ArgumentNullException("Destination path is null or empty.");
             }
 
-            string destinationExtension = Path.GetExtension(destination);
-            if (destinationExtension != Extension)
+            if (Path.GetExtension(destination) != Extension)
             {
                 throw new ArgumentException("Destination path is not valid. You need to specify the name of a zip file, instead.");
             }
@@ -40,8 +39,7 @@ namespace LightBuzz.Archiver
                 File.Delete(destination);
             }
 
-            FileAttributes sourceAttributes = File.GetAttributes(source);
-            if (sourceAttributes.HasFlag(FileAttributes.Directory))
+            if (File.GetAttributes(source).HasFlag(FileAttributes.Directory))
             {
                 // Compress a folder.
                 ZipFile.CreateFromDirectory(source, destination);
@@ -127,12 +125,12 @@ namespace LightBuzz.Archiver
                 throw new ArgumentNullException("Destination path is null or empty.");
             }
 
-            if (File.GetAttributes(source) == FileAttributes.Directory)
+            if (File.GetAttributes(source).HasFlag(FileAttributes.Directory))
             {
                 throw new ArgumentException("Source is a directory. You need to specify the name of a zip file, instead.");
             }
 
-            if (File.GetAttributes(destination) != FileAttributes.Directory)
+            if (Path.GetExtension(destination).Length != 0)
             {
                 throw new ArgumentException("Destination is not a directory. You need to specify the name of a directory, instead.");
             }
