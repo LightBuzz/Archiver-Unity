@@ -113,7 +113,8 @@ namespace LightBuzz.Archiver
         /// </summary>
         /// <param name="source">The compressed zip file.</param>
         /// <param name="destination">The directory where the file will be decompressed.</param>
-        public static void Decompress(string source, string destination)
+        /// <param name="overwrite">Whether or not to extract the ZIP overwriting all files. Defaults to false, where it will throw an exception if a file already exists.</param>
+        public static void Decompress(string source, string destination, bool overwrite = false)
         {
             if (string.IsNullOrEmpty(source))
             {
@@ -145,7 +146,22 @@ namespace LightBuzz.Archiver
                 Directory.CreateDirectory(destination);
             }
 
-            ZipFile.ExtractToDirectory(source, destination);
+            if (overwrite)
+            {
+                using (ZipArchive archive = ZipFile.OpenRead(source))
+                {
+                    foreach (ZipArchiveEntry entry in archive.Entries)
+                    {
+                        string targetFile = Path.Combine(destination, entry.FullName);
+                        Directory.CreateDirectory(Path.GetDirectoryName(targetFile));
+                        entry.ExtractToFile(targetFile, true);
+                    }
+                }
+            }
+            else
+            {
+                ZipFile.ExtractToDirectory(source, destination);
+            }
         }
 
         /// <summary>
@@ -153,7 +169,8 @@ namespace LightBuzz.Archiver
         /// </summary>
         /// <param name="source">The compressed zip file.</param>
         /// <param name="destination">The directory where the file will be decompressed.</param>
-        public static void Decompress(FileInfo source, DirectoryInfo destination)
+        /// <param name="overwrite">Whether or not to extract the ZIP overwriting all files. Defaults to false, where it will throw an exception if a file already exists.</param>
+        public static void Decompress(FileInfo source, DirectoryInfo destination, bool overwrite = false)
         {
             if (source == null)
             {
@@ -165,7 +182,7 @@ namespace LightBuzz.Archiver
                 throw new ArgumentNullException("Destination directory is null.");
             }
 
-            Decompress(source.FullName, destination.FullName);
+            Decompress(source.FullName, destination.FullName, overwrite);
         }
     }
 }
