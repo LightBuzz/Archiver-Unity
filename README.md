@@ -65,6 +65,7 @@ That's it!
 
 ## Contributors
 * [Vangos Pterneas](http://pterneas.com) from [LightBuzz](http://lightbuzz.com)
+* [Daven Bigelow](http://davenbigelow.com/)
 
 ## License
 You are free to use these libraries in personal and commercial projects by attributing the original creator. Licensed under [Apache v2 License](https://github.com/LightBuzz/archiver-unity/blob/master/LICENSE).
