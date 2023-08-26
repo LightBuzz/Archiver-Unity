@@ -22,6 +22,7 @@ Where source and destination are the specified files and folders. You can run th
 The archiving functionality is compatible with **Unity 2017.3** or later version. The following platforms are supported:
 
 * iOS
+* macOS
 * Android
 * Windows Standalone (x86 and x64)
 * Universal Windows Platform (UWP)
